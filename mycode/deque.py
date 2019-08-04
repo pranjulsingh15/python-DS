@@ -8,4 +8,7 @@ DoubleEnded.appendleft("ddd")
 
 DoubleEnded.append("gg")
 
+DoubleEnded.popleft()
+DoubleEnded.popleft()
+
 print(DoubleEnded)

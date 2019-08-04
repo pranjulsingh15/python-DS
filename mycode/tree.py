@@ -1,3 +1,4 @@
+import queue
 class node:
     def __init__(self,data):
         self.data=data
@@ -60,6 +61,21 @@ class node:
         print(self.data),
         if(self.right):
             self.right.printTree()
+    def levelOrder(self):
+        l=queue.Queue(maxsize=500)
+        if(self!=None):
+            l.put(self)
+            while(l.empty()==False):
+                k=l.get()
+                print(k.data,end=" ")
+                if(k.left):
+                    l.put(k.left)
+                if(k.right):
+                    l.put(k.right)
+
+
+
+
 
 if __name__=='__main__':
     root=node(23)
@@ -73,4 +89,5 @@ if __name__=='__main__':
     print(root.inOrder(root))
     print(root.preOrder(root))
     print(root.postOrder(root))
+    root.levelOrder()
 

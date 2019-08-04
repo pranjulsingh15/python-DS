@@ -1,2 +1,3 @@
-q=input().split(" ")
-print(q[0])
+import heapq
+
+l=[]
