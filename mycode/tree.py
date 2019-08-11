@@ -35,32 +35,30 @@ class node:
             print("value found")
 
     def inOrder(self,root):
-        l=[]
         if root:
-            l=self.inOrder(root.left)
-            l.append(root.data)
-            l=l+self.inOrder(root.right)
-        return l
+            self.inOrder(root.left)
+            print(root.data, end=" ")
+            self.inOrder(root.right)
+
     def preOrder(self,root):
-        l=[]
         if root:
-            l.append(root.data)
-            l=l+self.preOrder(root.left)
-            l=l+self.preOrder(root.right)
-        return l
+            print(root.data,end=" ")
+            self.preOrder(root.left)
+            self.preOrder(root.right)
+
     def postOrder(self,root):
-        l=[]
         if root:
-            l=self.preOrder(root.right)
-            l=l+self.preOrder(root.left)
-            l.append(root.data)
-        return l
+            self.preOrder(root.right)
+            self.preOrder(root.left)
+            print(root.data,end=" ")
+
     def printTree(self):
         if(self.left):
             self.left.printTree()
         print(self.data),
         if(self.right):
             self.right.printTree()
+
     def levelOrder(self):
         l=queue.Queue(maxsize=500)
         if(self!=None):
@@ -73,10 +71,6 @@ class node:
                 if(k.right):
                     l.put(k.right)
 
-
-
-
-
 if __name__=='__main__':
     root=node(23)
     root.insert(60)
@@ -86,8 +80,11 @@ if __name__=='__main__':
     root.findVal(23)
     root.findVal(21)
     root.printTree()
-    print(root.inOrder(root))
-    print(root.preOrder(root))
-    print(root.postOrder(root))
+    root.inOrder(root)
+    print()
+    root.preOrder(root)
+    print()
+    root.postOrder(root)
+    print()
     root.levelOrder()
 
