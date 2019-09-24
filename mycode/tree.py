@@ -94,6 +94,15 @@ class Node:
         downlevel = self.getlevel(root.right, data, level + 1)
         return downlevel
 
+    def findlca(self, root, a, b):
+        while root:
+            if (a <= root.data < b) or (a > root.data >= b):
+                return root
+            if a < root.data:
+                root = root.left
+            else:
+                root = root.right
+
 
 if __name__ == '__main__':
     root = Node(23)
@@ -101,6 +110,9 @@ if __name__ == '__main__':
     root.insert(5)
     root.insert(15)
     root.insert(28)
+    root.insert(70)
+    lca = root.findlca(root, 28, 70)
+    print("Lowest Common Ancestor is ", lca.data)
     root.findval(23)
     root.findval(21)
     root.printTree()
@@ -114,4 +126,4 @@ if __name__ == '__main__':
     print()
     height = root.height(root)
     print("height = ", height)
-    print("level =",root.getlevel(root, 28, 1))
+    print("level =", root.getlevel(root, 28, 1))
